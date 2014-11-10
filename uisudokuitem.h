@@ -9,6 +9,8 @@ namespace sudoku {
 class SudokuItem;
 }
 
+class ClickableLabel;
+
 namespace Ui {
 class UiSudokuItem;
 }
@@ -23,6 +25,8 @@ public:
     void setSudokuItem(SudokuItemPtr&& item);
 
     ~UiSudokuItem();
+public:
+    const sudoku::SudokuItem& get() const { return *item_; }
 public slots:
     void premark(int i);
     void setAvaliable(int i);
@@ -30,12 +34,19 @@ public slots:
     void userRemove(int i);
     void set(int i);
     void unset();
+signals:
+    void valueSetted(int v);
+    void valueUnsetted(int v);
+    void valuePremarked(int v);
+private slots:
+    void toggle_remove(int idx);
+    void toggle_premark();
 // avaliable ui operations
 private:
     void render();
-    void showCandidate();
     void showSelected();
     void showPremarked();
+    void showCandidates();
     void hideCandidateItem(int idx);
     void showCandidateItem(int idx);
     void highlightCandicateItem(int idx);
@@ -48,7 +59,7 @@ private:
     void setSelected(int i);
 private:
     Ui::UiSudokuItem *ui;
-    QLabel** labels;
+    ClickableLabel** labels;
     SudokuItemPtr item_;
 };
 

@@ -16,11 +16,13 @@ QMAKE_CXXFLAGS += -std=c++1y
 SOURCES += main.cpp\
         mainwindow.cpp \
     sudokuitem.cpp \
-    uisudokuitem.cpp
+    uisudokuitem.cpp \
+    clickablelabel.cpp
 
 HEADERS  += mainwindow.h \
     sudokuitem.hpp \
-    uisudokuitem.h
+    uisudokuitem.h \
+    clickablelabel.h
 
 FORMS    += mainwindow.ui \
     uisudokuitem.ui
