@@ -13,7 +13,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    typedef UiSudokuItem* UiSudokuBlock[3][3];
+    typedef UiSudokuItem* UiSudokuBlock[3][3]; // 3 * 3 block restrict
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();

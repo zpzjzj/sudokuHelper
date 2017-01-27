@@ -4,6 +4,7 @@
 #include "uisudokuitem.h"
 #include <QGridLayout>
 #include <QFrame>
+#include "checkavail.hpp"
 
 static void initLayout(QGridLayout* layout) {
 }
@@ -64,22 +65,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/**
+ * @brief MainWindow::update_set
+ * @param bi block row
+ * @param bj block col
+ * @param si row in block
+ * @param sj col in block
+ * @param v
+ */
 void MainWindow::update_set(int bi, int bj, int si, int sj, int v)
 {
-    for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j) {
-            blocks[bi][i][si][j]->setUnavaliable(v);
-            blocks[i][bj][j][sj]->setUnavaliable(v);
-            blocks[bi][bj][i][j]->setUnavaliable(v);
-        }
+    main_eval(blocks);
 }
 
 void MainWindow::update_unset(int bi, int bj, int si, int sj, int v)
 {
-    for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j) {
-            blocks[bi][i][si][j]->setAvaliable(v);
-            blocks[i][bj][j][sj]->setAvaliable(v);
-            blocks[bi][bj][i][j]->setAvaliable(v);
-        }
+    main_eval(blocks);
 }

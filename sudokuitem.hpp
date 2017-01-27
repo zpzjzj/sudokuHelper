@@ -6,6 +6,14 @@
 
 namespace sudoku {
 
+/**
+ * @brief The itemstate enum
+ *      available: current valid alternative
+ *      user_remove: removed by user
+ *      auto_remove: removed by program
+ *      pre_marked: init at start as the value of the cell
+ *      selected: choose as the value of the cell by player
+ */
 enum class itemstate { avaliable, user_remove, auto_remove, pre_marked, pending, selected};
 
 class SudokuItem
@@ -31,7 +39,12 @@ public:
     void autoRemove(int v) { ITEM_ASSERT(v); v_[v] = itemstate::auto_remove; }
     void userRemove(int v) { ITEM_ASSERT(v); v_[v] = itemstate::user_remove; }
     void set(int v) { ITEM_ASSERT(v); ck = v; s = itemstate::selected; }
-    void unset() { s = itemstate::pending; }
+    void unset() {
+        s = itemstate::pending;
+        for (auto& each : v_) {
+            each = itemstate::avaliable;
+        }
+    }
 
 // accessor
 public:

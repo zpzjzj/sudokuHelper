@@ -17,12 +17,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     sudokuitem.cpp \
     uisudokuitem.cpp \
-    clickablelabel.cpp
+    clickablelabel.cpp \
+    checkavail.cpp
 
 HEADERS  += mainwindow.h \
     sudokuitem.hpp \
     uisudokuitem.h \
-    clickablelabel.h
+    clickablelabel.h \
+    checkavail.hpp
 
 FORMS    += mainwindow.ui \
     uisudokuitem.ui
